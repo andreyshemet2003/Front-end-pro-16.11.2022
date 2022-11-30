@@ -1,3 +1,27 @@
-const hour = prompt("Введите сколько часов нужно конвертировать", 5);
-const second = hour * 60 * 60;
-alert(`Количество часов - ${hour}; после перевода в секунды - ${second}`)
+
+
+/* if(numOrStr === null) {
+console.log('ви скасували')
+} else if( numOrStr.trim() === '' ) {
+console.log('Empty String');
+} else if ( isNaN( +numOrStr ) ) {
+console.log(' number is Ba_NaN')
+} else {
+console.log('OK!')
+} */
+
+switch (isNaN(numOrStr) || numOrStr) {
+	case  null:
+  	console.log('ви скасували')
+  break;
+  case  '':
+  	console.log('Empty String');
+  break;
+  case  true  :
+  	console.log(' number is Ba_NaN')
+  break;
+ 	default:
+    console.log('OK!')
+    break;
+}
+
