@@ -1,5 +1,8 @@
 
 
+
+
+let numOrStr = prompt('input number or string');
 /* if(numOrStr === null) {
 console.log('ви скасували')
 } else if( numOrStr.trim() === '' ) {
@@ -24,4 +27,3 @@ switch (isNaN(numOrStr) || numOrStr) {
     console.log('OK!')
     break;
 }
-

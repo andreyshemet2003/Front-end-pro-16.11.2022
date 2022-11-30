@@ -1,0 +1,1 @@
+switch(isNaN(numOrStr)||numOrStr){case null:console.log("ви скасували");break;case"":console.log("Empty String");break;case!0:console.log(" number is Ba_NaN");break;default:console.log("OK!")}
