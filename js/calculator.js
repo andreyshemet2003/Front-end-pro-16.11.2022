@@ -1,58 +1,72 @@
-const year = prompt("Введите год рождения", 1999);
-const city = prompt("Введите ваш город", "Харьков");
-const sport = prompt("Введите любимый вид спорта", "Сон");
+let users = [
+  {
+  "index": 0,
+  "isActive": true,
+  "balance": "$2,226.60",
+  "name": "Eugenia Sawyer",
+  "gender": "female",
+  "phone": "+1 (840) 583-3207",
+  "address": "949 John Street, Rose, Puerto Rico, 1857"
+  },
+  {
+  "index": 1,
+  "isActive": true,
+  "balance": "$2,613.77",
+  "name": "Pauline Gallegos",
+  "gender": "female",
+  "phone": "+1 (985) 593-3328",
+  "address": "328 Greenpoint Avenue, Torboy, North Dakota, 6857"
+  },
+  {
+  "index": 2,
+  "isActive": false,
+  "balance": "$3,976.41",
+  "name": "Middleton Chaney",
+  "gender": "male",
+  "phone": "+1 (995) 591-2478",
+  "address": "807 Fleet Walk, Brutus, Arkansas, 9783"
+  },
+  {
+  "index": 3,
+  "isActive": true,
+  "balance": "$1,934.58",
+  "name": "Burns Poole",
+  "gender": "male",
+  "phone": "+1 (885) 559-3422",
+  "address": "730 Seba Avenue, Osage, Alabama, 6290"
+  },
+  {
+  "index": 4,
+  "isActive": true,
+  "balance": "$3,261.65",
+  "name": "Mcfadden Horne",
+  "gender": "male",
+  "phone": "+1 (942) 565-3988",
+  "address": "120 Scholes Street, Kirk, Michigan, 1018"
+  },
+  {
+  "index": 5,
+  "isActive": false,
+  "balance": "$1,790.56",
+  "name": "Suzette Lewis",
+  "gender": "female",
+  "phone": "+1 (837) 586-3283",
+  "address": "314 Dunne Place, Bawcomville, Guam, 9053"
+  }
+  ]
 
+  const filterScore = user.filter (function(bal)
+  {
+    return bal.balance > '1.999.99' ;
+  })
+  console.log (filterScore);
 
-const current = 2022;
-let IsAnyCity = true;
-switch (city) {
-  case "Киев":
-    alert(`Ты живешь в Украине`)
-    break;
-  case "Лондон":
-    alert(`Ты живешь в Великобритании`)
-    break;
-  case "Вашингтон":
-    alert(`Ты живешь в США`)
-    break;
-  case null:
-  case "":
-    alert(`Шкода, що ви не захотіли ввести своє місто`)
-    IsAnyCity = false;
-  default:
-    alert(`Ви живете в місті ${city}`)
-}
+  filterBalance.forEach (function(obj, index) {
+    for (let key in obj) {
+      console.log(obj ['phone']);
+    }
+  });
 
-const Currentyear = current - year;
-if (year > 0) {
-  alert(`Тебе ${year} года`)
-}
-else {
-  alert(`Шкода, що ви не захотіли ввести свій рік народження`)
-}
-
-
-let IsAnySport = true;
-switch (sport) {
-  case "Бокс":
-    alert(` Круто! Хочешь стать Александром Усиком?`)
-    break;
-  case "Волейбол":
-    alert(` Круто! Хочешь стать Иваном Зайцевым?`)
-    break;
-  case "Футбол":
-    alert(` Круто! Хочешь стать Криштиану Роналду?`)
-    break;
-  case null:
-  case "":
-  IsAnySport = true;
-    alert(`Шкода, що ви не захотіли ввести свій вид спорту`)
-}
-
-
-if (IsAnySport === false && IsAnyCity === false){
-  alert (` ви не ввели ані спорт ані місто`)
-}
-else if (IsAnySport === true && IsAnyCity === false) {
-  alert (`Ви не ввели місто`)
-}
+  const sum = users.reduce(function(accumulator, currentValue){
+    return accumulator + Number(currentValue.balance.replace(/[\s,$]/g, ''));
+}, 0); console.log(sum);
