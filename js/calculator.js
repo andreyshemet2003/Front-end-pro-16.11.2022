@@ -1,17 +1,10 @@
-let ladder = {
-  step: 0,
-  up: function () {
-      this.step++;
-      return this;
-  },
-  down: function () {
-      this.step--;
-      return this;
-  },
-  showStep: function () { // показывает текущую ступеньку
-      alert(this.step);
-      return this;
-  }
-};
+function pow(numb, degree) {
 
-ladder.up().up().down().showStep();
+    if (degree == 1) {
+      return numb;
+    } else {
+      return numb * pow(numb, degree - 1);
+
+    }
+  }
+  console.log (pow(5,2)); 
