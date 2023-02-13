@@ -1,10 +1,36 @@
-function pow(numb, degree) {
+function Car() {
+  this.drive = function () {
+    console.log("drinibg");
+  };
 
-    if (degree == 1) {
-      return numb;
-    } else {
-      return numb * pow(numb, degree - 1);
+  this.brake = function () {
+    console.log("breaking");
+  };
 
-    }
-  }
-  console.log (pow(5,2)); 
+  this.openDoors = function () {
+    console.log("doors opening normal");
+  };
+}
+
+function Lamborghini() {
+  Car.call(this);
+
+  this.openDoors = function () {
+    console.log("vertical open in Lamborghini");
+  };
+}
+
+Lamborghini.prototype = Object.create(Car.prototype);
+Lamborghini.prototype.constructor = Lamborghini;
+
+let myLambo = new Lamborghini();
+
+myLambo.drive();
+myLambo.brake();
+myLambo.openDoors();
+
+let myCar = new Car();
+
+myCar.drive();
+myCar.brake();
+myCar.openDoors();
