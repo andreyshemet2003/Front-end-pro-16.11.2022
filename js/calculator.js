@@ -1,36 +1,33 @@
-function Car() {
-  this.drive = function () {
-    console.log("drinibg");
-  };
+function Auto(car) {
+  this.car = car;
+} 
 
-  this.brake = function () {
-    console.log("breaking");
-  };
-
-  this.openDoors = function () {
-    console.log("doors opening normal");
-  };
+Auto.prototype.driving = function (){
+  console.log ( `${this.car} driving`);
 }
 
-function Lamborghini() {
-  Car.call(this);
-
-  this.openDoors = function () {
-    console.log("vertical open in Lamborghini");
-  };
+Auto.prototype.breaking = function (){
+  console.log ( `${this.car} braking`);
 }
 
-Lamborghini.prototype = Object.create(Car.prototype);
-Lamborghini.prototype.constructor = Lamborghini;
+Auto.prototype.OpenDoors = function (){
 
-let myLambo = new Lamborghini();
+  if (this.car === "Lamborghini") {
+    console.log (`${this.car} vertical opening`)
+  }
+  else {
+    console.log (`${this.car} normal opening`);
+  }
+}
+const bmw = new Auto("BMW");
+const lamborghini = new Auto("Lamborghini");
 
-myLambo.drive();
-myLambo.brake();
-myLambo.openDoors();
+bmw.breaking();
+bmw.driving();
+bmw.OpenDoors();
 
-let myCar = new Car();
+lamborghini.breaking();
+lamborghini.driving();
+lamborghini.OpenDoors();
 
-myCar.drive();
-myCar.brake();
-myCar.openDoors();
+
