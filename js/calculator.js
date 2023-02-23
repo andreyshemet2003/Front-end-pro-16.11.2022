@@ -1,82 +1,74 @@
 class Human {
-
-  constructor(name, gender) {
+  constructor(name, age) {
     this.name = name;
-    this.gender = gender;
+    this.age = age;
   }
-  getHumansInfo() {
-    return `Name: ${this.name} / Gender: ${this.gender}.`;
-  }
-}
-
-const andrew = new Human("Andrew", "female");
-const john = new Human("John", "male");
-const kate = new Human("Kate", "female");
-const pablo = new Human("Pablo", "male");
-
-console.log(andrew.getHumansInfo());
-console.log(john.getHumansInfo());
-console.log(kate.getHumansInfo());
-console.log(pablo.getHumansInfo());
-
-class Apartment {
-  residents = [];
-
-  addResident(human) {
-    this.residents.push(human.name);
-  }
-
-  showResidents() {
-    console.log(`Residents of apartment: ${this.residents}.`);
+  showHumansInfo() {
+    console.log(`Name: ${this.name} / Age: ${this.age}.`);
   }
 }
 
-const apartment1 = new Apartment();
-const apartment2 = new Apartment();
-const apartment3 = new Apartment();
-const apartment4 = new Apartment();
+const andrew = new Human("Andrew", 25);
+andrew.showHumansInfo();
 
-apartment1.addResident(andrew);
-apartment1.showResidents();
+const laura = new Human("Laura", 17);
+laura.showHumansInfo();
 
-apartment2.addResident(john);
-apartment2.showResidents();
+const kate = new Human("Kate", 27);
+kate.showHumansInfo();
 
-apartment3.addResident(kate);
-apartment3.addResident(pablo);
-apartment3.showResidents();
+const pablo = new Human("Pablo", 32);
+pablo.showHumansInfo();
 
-class House {
-  apartments = [];
-  apartmentsMax;
 
-  constructor(apartmentsMax) {
-    this.apartmentsMax = apartmentsMax;
+class Auto {
+  owner;
+  constructor(brand, model, yearOfRelease, licensePlate) {
+    this.brand = brand;
+    this.model = model;
+    this.yearOfRelease = yearOfRelease;
+    this.licensePlate = licensePlate;
   }
-  addApartment(apartment) {
-    if (this.apartments.length < this.apartmentsMax) {
-      this.apartments.push(apartment);
-      return this.apartments;
+
+  showAutoInfo() {
+    console.log(` 
+    Auto -
+      Brand: ${this.brand} 
+      Model: ${this.model} 
+      Year of release: ${this.yearOfRelease} 
+      LicensePlate: ${this.licensePlate}.`);
+  }
+
+  addOwner(human) {
+    if (human.age < 18) {
+      console.log(`${human.name}: cannot be the owner!
+   Age: ${human.age} y.o.`);
+      return;
     }
-    return console.log("House is full!");
+    this.owner = human;
   }
-  showApartments() {
-    console.log(this.apartments);
+
+  showOwner() {
+    console.log(`The owner of ${this.brand}: ${this.owner.name}.
+    Age: ${this.owner.age} y.o.`);
   }
 }
 
-const house = new House(5);
+const nissan = new Auto("Nissan", "Leaf", 2010, "UA E4873HR");
+nissan.showAutoInfo();
+nissan.addOwner(andrew);
+nissan.showOwner();
 
-house.addApartment(apartment1);
-house.addApartment(apartment2);
-house.addApartment(apartment3);
-house.addApartment(apartment4);
-house.showApartments();
+const toyota = new Auto("Toyota", "Prado", 1987, "UA AB2152AH");
+toyota.showAutoInfo();
+toyota.addOwner(laura);
 
-const house2 = new House(3);
+const bmw = new Auto("BMW", "X5", 2005, "UA 00007");
+bmw.showAutoInfo();
+bmw.addOwner(kate);
+bmw.showOwner();
 
-house2.addApartment(apartment1);
-house2.addApartment(apartment2);
-house2.addApartment(apartment3);
-house2.addApartment(apartment4);
-house2.showApartments();
+const mazda = new Auto("Mazda", "5", 2003, "UA AA6734ZE");
+mazda.showAutoInfo();
+mazda.addOwner(pablo);
+mazda.showOwner();
