@@ -8,16 +8,16 @@ class Human {
   }
 }
 
-const andrew = new Human("Andrew", 25);
+const andrew = new Human("Andrew", 19);
 andrew.showHumansInfo();
 
 const laura = new Human("Laura", 17);
 laura.showHumansInfo();
 
-const kate = new Human("Kate", 27);
+const kate = new Human("Kate", 22);
 kate.showHumansInfo();
 
-const pablo = new Human("Pablo", 32);
+const pablo = new Human("Pablo", 36);
 pablo.showHumansInfo();
 
 
