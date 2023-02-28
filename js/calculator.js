@@ -1,34 +1,63 @@
-// Task 1
+class Hamburger {
+  constructor(size, pack) {
+      this.size = size;
+      this.pack = pack;
+      this.full = [];
+  }
+  static sizeSmall = {
+      price: 50,
+      calories: 20,
+  };
+  static sizeBig = {
+      price: 100,
+      calories: 40,
+  };
+  static packCheese = {
+      price: 10,
+      calories: 20,
+  };
+  static packSalad = {
+      price: 20,
+      calories: 5,
+  };
+  static packPotato = {
+      price: 15,
+      calories: 10,
+  };
+  static toppingFlavoring = {
+      price: 15,
+      calories: 0,
+  };
+  static toppingMayo = {
+      price: 20,
+      calories: 5,
+  };
+  addTopping(topping) {
+      this.full.push(topping)
+  }
+  calculatorPrice() {
+      const sizePrice = this.size.price;
+      const packPrice = this.pack.price;
+      const fullPrice = this.full.reduce((acc, current) => acc + current.price, 0);
+      return sizePrice + packPrice + fullPrice;
+  }
+  calculatorCalories() {
+  const sizeCalories = this.size.calories;
+  const packCalories = this.pack.calories;
+  const fullCalories = this.full.reduce((acc, current) => acc + current.calories, 0);
+  return sizeCalories + packCalories + fullCalories;
+  }
+}
 
-const checkDate = (mSec1) => {
-    const yourDate = new Date(mSec1);
-    const today = new Date();
-const oneDayMilliseconds = 24 * 60 * 60 * 1000;
-const yesterdayMilliseconds = today.getTime() - oneDayMilliseconds;
-const yesterday = new Date(yesterdayMilliseconds);
-    return yourDate.getDay() === today.getDay() && yourDate.getMonth() === today.getMonth() && yourDate.getFullYear() === today.getFullYear();
-}
-console.log(checkDate(Date.now()));
-console.log(checkDate(1676901741000));
-
-// Task 2
-const returnDate = (mSec2) => {
-  const yourDate = new Date(mSec2);
-  const date = yourDate.getDate().toString().padStart(2, "0");
-  const month = (yourDate.getMonth() + 1).toString().padStart(2, "0");
-  const year = yourDate.getFullYear();
-  const hour = yourDate.getHours().toString().padStart(2, "0");
-  const minutes = yourDate.getMinutes().toString().padStart(2, "0");
-  return `${date}.${month}.${year} ${hour}:${minutes}`;
-}
-console.log(returnDate(2077269907712));
-//Task 3
-const lastDate = (mSec3) => {
-  const yourDate = new Date(mSec3);
-  const today = new Date();
-  const difference = yourDate.getTime() - today.getTime();
-  const differenceSec = Math.floor(difference / 1000);
-  return differenceSec > 0 ? `Прошло уже ${differenceSec} секунд` : `Должно пройти еще ${Math.abs(differenceSec)} секунд`;
-}
-console.log(lastDate(1637234208631));
-console.log(lastDate(2077269907712));
+// маленький гамбургер з начинкою з сиру
+const hamburger = new Hamburger(Hamburger.sizeSmall, Hamburger.packCheese);
+// добавка з майонезу
+hamburger.addTopping(Hamburger.toppingMayo);
+// запитаємо скільки там калорій
+console.log(`Calories: ${hamburger.calculatorCalories()}`);
+// скільки коштує
+console.log(`Price: ${hamburger.calculatorPrice()}`);
+// я тут передумав і вирішив додати ще приправу
+hamburger.addTopping(Hamburger.toppingFlavoring);
+// А скільки тепер коштує?
+console.log(`Price with sauce: ${hamburger.calculatorPrice()}`);
