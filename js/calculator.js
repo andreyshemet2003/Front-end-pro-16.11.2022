@@ -1,106 +1,34 @@
-class Student {
-  constructor(name, surname, yearOfBirth) {
-    this.name = name;
-    this.surname = surname;
-    this.yearOfBirth = yearOfBirth;
-    this.marks = [];
-    this.attendance = new Array(25);
-  }
+// Task 1
 
-  getStudentsAge() {
-    return 2023 - this.yearOfBirth;
-  }
-
-  getAverageScore() {
-    const sum = this.marks.reduce(function (acc, mark) {
-      return (acc += mark);
-    }, 0);
-    return sum / this.marks.length;
-  }
-
-  getAverageAttendance() {
-    let attendClass = 0,
-      lessonNum = 0;
-    this.attendance.forEach((elem) => {
-      if (elem === true) {
-        attendClass++;
-      }
-      if (elem === true || elem === false) {
-        lessonNum++;
-      }
-    });
-    return attendClass / lessonNum;
-  }
-
-  present() {
-    for (let i = 0; i < this.attendance.length; i++) {
-      if (this.attendance[i] === undefined) {
-        this.attendance[i] = true;
-        break;
-      }
-    }
-  }
-
-  absent() {
-    for (let i = 0; i < this.attendance.length; i++) {
-      if (this.attendance[i] === undefined) {
-        this.attendance[i] = false;
-        break;
-      }
-    }
-  }
-
-  summary() {
-    const averageScore = this.getAverageScore();
-    const attendance = this.getAverageAttendance();
-    if (averageScore > 90 && attendance > 0.9) {
-      return "Молодець!";
-    } else if (averageScore > 90 || attendance > 0.9) {
-      return "Добре, але можна краще!";
-    } else if (averageScore < 90 && attendance < 0.9) {
-      return "Редиска!";
-    }
-  }
-
-  showStudentsInfo() {
-    console.log(`
-       Name: ${this.name} ${this.surname} 
-       Age: ${this.getStudentsAge()}
-       Average grade: ${this.getAverageScore()}
-       Attendance: ${this.getAverageAttendance()}
-       Summery: ${this.summary()}`);
-  }
+const checkDate = (mSec1) => {
+    const yourDate = new Date(mSec1);
+    const today = new Date();
+const oneDayMilliseconds = 24 * 60 * 60 * 1000;
+const yesterdayMilliseconds = today.getTime() - oneDayMilliseconds;
+const yesterday = new Date(yesterdayMilliseconds);
+    return yourDate.getDay() === today.getDay() && yourDate.getMonth() === today.getMonth() && yourDate.getFullYear() === today.getFullYear();
 }
+console.log(checkDate(Date.now()));
+console.log(checkDate(1676901741000));
 
-const student1 = new Student("Jane", "Johnson", 2005);
-student1.marks = [90, 96, 100, 88, 92];
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-console.log(student1);
-student1.showStudentsInfo();
-
-const student2 = new Student("Max", "Smith", 2004);
-student2.marks = [88, 85, 95, 95];
-student2.present();
-student2.present();
-student2.absent();
-student2.present();
-student2.absent();
-student2.present();
-console.log(student2);
-student2.showStudentsInfo();
-
-const student3 = new Student("Paul", "Kempbel", 2003);
-student3.marks = [50, 75, 60];
-student3.present();
-student3.absent();
-student3.present();
-student3.absent();
-student3.present();
-student3.absent();
-console.log(student3);
-student3.showStudentsInfo();
+// Task 2
+const returnDate = (mSec2) => {
+  const yourDate = new Date(mSec2);
+  const date = yourDate.getDate().toString().padStart(2, "0");
+  const month = (yourDate.getMonth() + 1).toString().padStart(2, "0");
+  const year = yourDate.getFullYear();
+  const hour = yourDate.getHours().toString().padStart(2, "0");
+  const minutes = yourDate.getMinutes().toString().padStart(2, "0");
+  return `${date}.${month}.${year} ${hour}:${minutes}`;
+}
+console.log(returnDate(2077269907712));
+//Task 3
+const lastDate = (mSec3) => {
+  const yourDate = new Date(mSec3);
+  const today = new Date();
+  const difference = yourDate.getTime() - today.getTime();
+  const differenceSec = Math.floor(difference / 1000);
+  return differenceSec > 0 ? `Прошло уже ${differenceSec} секунд` : `Должно пройти еще ${Math.abs(differenceSec)} секунд`;
+}
+console.log(lastDate(1637234208631));
+console.log(lastDate(2077269907712));
