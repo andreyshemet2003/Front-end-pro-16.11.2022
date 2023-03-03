@@ -1,52 +1,46 @@
-class SuperMath {
-  check(obj) {
-    const answer = confirm(
-      `Чи хочете ви виконати саме цю дію ${obj.X} ${obj.znak} ${obj.Y} ?`
-    );
+//   Task 1
 
-    let result = 0;
-    if (answer) {
-      if (obj.znak === "+") {
-        result = obj.X + obj.Y;
-      } else if (obj.znak === "-") {
-        result = obj.X - obj.Y;
-      } else if (obj.znak === "*") {
-        result = obj.X * obj.Y;
-      } else if (obj.znak === "/") {
-        result = obj.X / obj.Y;
-      } else if (obj.znak === "%") {
-        result = obj.X % obj.Y;
-      }
-      console.log(result);
-    } else {
-      this.input();
-    }
+const numbersArray = [1, 1, 2, 3, 4, 5, 5, 5, 6];
+const getUniqueElements = (numbersArray) => {
+  return [...new Set(numbersArray)];
+};
+
+const result = numbersArray;
+console.log(getUniqueElements(result));
+
+
+//   Task 2
+
+const userBob = { name: "Bob" };
+const userJane = { name: "Jane" };
+
+const userMap = new Map();
+
+userMap.set(userBob, `Hello ${userBob.name} nice to see you`);
+userMap.set(userJane, `How your kids doing ${userJane.name}`);
+
+const sayHiFunc = (obj) => {
+  return userMap.get(obj);
+};
+console.log(sayHiFunc(userBob));
+console.log(sayHiFunc(userJane));
+
+
+//   Task 3
+
+const myMap = new Map([
+  ["name", "Kate"],
+  ["surname", "Smith"],
+]);
+const object = { name: "Sam", surname: "Jones" };
+
+const transform = (obj) => {
+  if (obj.size) {
+    return Object.fromEntries(obj);
+  } else {
+    return new Map(Object.entries(obj));
   }
+};
 
-  input() {
-    let result = 0;
-    const numOne = Number(prompt("Введіть перше число"));
-    const numTwo = Number(prompt("Введіть друге число"));
-
-    const mathSign = prompt(
-      "Введіть потрібний вам знак, наприклад: + , - , * , / , %"
-    );
-    if (mathSign === "+") {
-      result = numOne + numTwo;
-    } else if (mathSign === "-") {
-      result = numOne - numTwo;
-    } else if (mathSign === "*") {
-      result = numOne * numTwo;
-    } else if (mathSign === "/") {
-      result = numOne / numTwo;
-    } else if (mathSign === "%") {
-      result = numOne % numTwo;
-    } else {
-      console.log("Виникла помилка,введіть вірний знак");
-    }
-    console.log(result);
-  }
-}
-let obj = { X: 12, Y: 3, znak: "/" };
-const p = new SuperMath();
-p.check(obj);
+console.log(transform(myMap));
+console.log(transform(object));
